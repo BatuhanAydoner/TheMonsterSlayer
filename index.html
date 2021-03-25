@@ -14,18 +14,18 @@
             <div class="small-6 columns">
                 <h1 class="text-center">YOU</h1>
                 <div class="healthbar">
-                    <div class="healthbar text-center" :style="{width: playerHealt + '%'}"
+                    <div class="healthbar text-center" :style="{width: playerHealth + '%'}"
                         style="background-color: green; margin: 0; color: white;">
-                        {{playerHealt}}%
+                        {{playerHealth}}%
                     </div>
                 </div>
             </div>
             <div class="small-6 columns">
                 <h1 class="text-center">MONSTER</h1>
                 <div class="healthbar">
-                    <div class="healthbar text-center" :style="{width: monsterHealt + '%'}"
+                    <div class="healthbar text-center" :style="{width: monsterHealth + '%'}"
                         style="background-color: green; width:100%; margin: 0; color: white;">
-                        {{monsterHealt}}%
+                        {{monsterHealth}}%
                     </div>
                 </div>
             </div>
@@ -46,8 +46,9 @@
         <section class="row log">
             <div class="small-12 columns">
                 <ul>
-                    <li v-for="logs">
-
+                    <li v-for="(log, index) in logs">
+                        <div>{{log.player}}</div>
+                        <div>{{log.monster}}</div>
                     </li>
                 </ul>
             </div>

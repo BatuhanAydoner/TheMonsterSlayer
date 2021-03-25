@@ -1,48 +1,67 @@
 new Vue({
   el: "#app",
   data: {
-    playerHealt: 100,
-    monsterHealt: 100,
+    playerHealth: 100,
+    monsterHealth: 100,
     logs: [],
   },
   methods: {
     newGame: function () {
-      this.playerHealt = 100;
-      this.monsterHealt = 100;
+      this.playerHealth = 100;
+      this.monsterHealth = 100;
+      this.logs = [];
     },
     attack: function (type) {
+      let playerDamage = 0;
+      let monsterDamage = 0;
       if (type === 0) {
-        this.playerHealt = parseInt(
-          (this.playerHealt - Math.random() * 11).toFixed(0)
+        playerDamage = Math.random() * 11;
+        monsterDamage = Math.random() * 11;
+        this.playerHealth = parseInt(
+          (this.playerHealth - playerDamage).toFixed(0)
         );
-        this.monsterHealt = parseInt(
-          (this.monsterHealt - Math.random() * 11).toFixed(0)
+        this.monsterHealth = parseInt(
+          (this.monsterHealth - monsterDamage).toFixed(0)
         );
       } else {
-        this.playerHealt = parseInt(
-          (this.playerHealt - Math.random() * 20).toFixed(0)
+        playerDamage = Math.random() * 20;
+        monsterDamage = Math.random() * 20;
+        this.playerHealth = parseInt(
+          (this.playerHealth - playerDamage).toFixed(0)
         );
-        this.monsterHealt = parseInt(
-          (this.monsterHealt - Math.random() * 20).toFixed(0)
+        this.monsterHealth = parseInt(
+          (this.monsterHealth - monsterDamage).toFixed(0)
         );
       }
 
-      if (this.playerHealt <= 0 || this.monsterHealt <= 0) {
+      this.logs.push({
+        player: `YOUR DAMAGE: (${playerDamage.toFixed(0)})`,
+        monster: `MONTER'S DAMAGE: (${monsterDamage.toFixed(0)})`,
+      });
+
+      if (this.playerHealth <= 0 || this.monsterHealth <= 0) {
         alert(
-          this.playerHealt > this.monsterHealt ? "Player won." : "Monster won."
+          this.playerHealth > this.monsterHealth
+            ? "Player won."
+            : "Monster won."
         );
-        this.playerHealt = 100;
-        this.monsterHealt = 100;
+        this.playerHealth = 100;
+        this.monsterHealth = 100;
+        this.logs = [];
       }
     },
     help: function () {
-      this.playerHealt = parseInt(
-        (parseInt(this.playerHealt) + Math.random() * 21).toFixed(0)
+      this.playerHealth = parseInt(
+        (parseInt(this.playerHealth) + Math.random() * 21).toFixed(0)
       );
 
-      if (this.playerHealt > 100) {
-        this.playerHealt = 100;
+      if (this.playerHealth > 100) {
+        this.playerHealth = 100;
       }
+    },
+    giveUp: function () {
+      alert("Game Over");
+      this.logs = [];
     },
   },
 });
