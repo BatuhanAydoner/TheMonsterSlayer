@@ -18,19 +18,19 @@ new Vue({
         playerDamage = Math.random() * 11;
         monsterDamage = Math.random() * 11;
         this.playerHealth = parseInt(
-          (this.playerHealth - playerDamage).toFixed(0)
+          (this.playerHealth - monsterDamage).toFixed(0)
         );
         this.monsterHealth = parseInt(
-          (this.monsterHealth - monsterDamage).toFixed(0)
+          (this.monsterHealth - playerDamage).toFixed(0)
         );
       } else {
         playerDamage = Math.random() * 20;
         monsterDamage = Math.random() * 20;
         this.playerHealth = parseInt(
-          (this.playerHealth - playerDamage).toFixed(0)
+          (this.playerHealth - monsterDamage).toFixed(0)
         );
         this.monsterHealth = parseInt(
-          (this.monsterHealth - monsterDamage).toFixed(0)
+          (this.monsterHealth - playerDamage).toFixed(0)
         );
       }
 
