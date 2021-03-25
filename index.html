@@ -14,8 +14,8 @@
             <div class="small-6 columns">
                 <h1 class="text-center">YOU</h1>
                 <div class="healthbar">
-                    <div class="healthbar text-center"
-                        style="background-color: green; margin: 0; width:100%; color: white;">
+                    <div class="healthbar text-center" :style="{width: playerHealt + '%'}"
+                        style="background-color: green; margin: 0; color: white;">
                         {{playerHealt}}%
                     </div>
                 </div>
@@ -23,7 +23,7 @@
             <div class="small-6 columns">
                 <h1 class="text-center">MONSTER</h1>
                 <div class="healthbar">
-                    <div class="healthbar text-center"
+                    <div class="healthbar text-center" :style="{width: monsterHealt + '%'}"
                         style="background-color: green; width:100%; margin: 0; color: white;">
                         {{monsterHealt}}%
                     </div>
@@ -32,21 +32,21 @@
         </section>
         <section class="row controls">
             <div class="small-12 columns">
-                <button id="start-game">NEW GAME</button>
+                <button id="start-game" @click="newGame">NEW GAME</button>
             </div>
         </section>
         <section class="row controls">
             <div class="small-12 columns">
-                <button id="attack">ATTACK</button>
-                <button id="special-attack">SPECIAL ATTACK</button>
-                <button id="heal">HEALT</button>
+                <button id="attack" @click="attack(0)">ATTACK</button>
+                <button id="special-attack" @click="attack(1)">SPECIAL ATTACK</button>
+                <button id="heal" @click="help">FIRST AID</button>
                 <button id="give-up">GIVE UP</button>
             </div>
         </section>
         <section class="row log">
             <div class="small-12 columns">
                 <ul>
-                    <li>
+                    <li v-for="logs">
 
                     </li>
                 </ul>
