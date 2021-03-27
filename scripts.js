@@ -1,17 +1,20 @@
 new Vue({
   el: "#app",
   data: {
+    started: false,
     playerHealth: 100,
     monsterHealth: 100,
     logs: [],
   },
   methods: {
     newGame: function () {
+      this.started = false;
       this.playerHealth = 100;
       this.monsterHealth = 100;
       this.logs = [];
     },
     attack: function (type) {
+      this.started = true;
       let playerDamage = 0;
       let monsterDamage = 0;
       if (type === 0) {
@@ -61,6 +64,9 @@ new Vue({
     },
     giveUp: function () {
       alert("Game Over");
+      this.started = false;
+      this.playerHealth = 100;
+      this.monsterHealth = 100;
       this.logs = [];
     },
   },

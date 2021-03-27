@@ -40,15 +40,15 @@
                 <button id="attack" @click="attack(0)">ATTACK</button>
                 <button id="special-attack" @click="attack(1)">SPECIAL ATTACK</button>
                 <button id="heal" @click="help">FIRST AID</button>
-                <button id="give-up">GIVE UP</button>
+                <button id="give-up" @click="giveUp">GIVE UP</button>
             </div>
         </section>
-        <section class="row log">
+        <section class="row log" v-if="started">
             <div class="small-12 columns">
                 <ul>
                     <li v-for="(log, index) in logs">
-                        <div>{{log.player}}</div>
-                        <div>{{log.monster}}</div>
+                        <div v-bind:class="{'player-turn': true}">{{log.player}}</div>
+                        <div :class="{'monster-turn': true}">{{log.monster}}</div>
                     </li>
                 </ul>
             </div>
